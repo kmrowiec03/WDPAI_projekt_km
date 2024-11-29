@@ -31,19 +31,23 @@
     </div>
     <div class="SignInComponent">
         <div class="BigText">Zarejestruj sie</div>
-          <div class="Big-Button Sign_Button">
-              <div class="Text Text-background">Email:</div>
-          </div>
-          <div class="Big-Button Sign_Button">
-              <div class="Text Text-background">Hasło:</div>
-          </div>
-          <div class="Big-Button Sign_Button">
-              <div class="Text Text-background">Hasło:</div>
-          </div>
-        <div  class="Big-Button Sign_Button Confirm-button" >
-            <div class="Text Text-bold">Potwierdź</div>
-        </div>
+          <form action="/login" method="POST">
+            <div class="Big-Button Sign_Button">
+              <input type="email" name="eMail"></input>
+            </div>
+            <div class="Big-Button Sign_Button">
+                <input type="password"name="password"></input>
+            </div>
+            <div class="Big-Button Sign_Button">
+              <input type="password"></input>
+            </div>
+            <div  class="Big-Button Sign_Button Confirm-button" >
+              <button type="submit">SIGN IN</button>
+            </div>
+          </form>
+          
     </div>
   </div>
+  
 </body>
 </html>
