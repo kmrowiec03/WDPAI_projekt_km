@@ -17,7 +17,7 @@
     font-style:normal;
     font-variant:normal;
     word-wrap: break-word;
-    text-align:left;  /* wyrownuje text w poziomie   */
+    text-align:left;
 }
 .Text-background{
     color: rgba(0, 0, 0, 0.40);

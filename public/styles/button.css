@@ -33,12 +33,29 @@
 }
   
 .Sign_Button{
-    top: 100px;
+    width: 100px;
+    height: 15px;
     padding: 16px 15px;
     margin-bottom: 13px;
     align-items: center;
+    display: flex;
+    justify-content: center;
 }
-  
+.Sign_Button input {
+    width: 100%;  /* Rozciąga input na pełną szerokość kontenera */
+    padding: 10px;  /* Dodaje przestrzeń wewnątrz inputa */
+    border: 1px solid #000;  /* Czarna ramka */
+    border-radius: 5px;  /* Zaokrąglone rogi */
+    background-color: transparent;  /* Przezroczyste tło */
+    color: #333;  /* Kolor tekstu */
+    font-size: 14px;  /* Wielkość czcionki */
+}
+
+.Sign_Button input:focus {
+    outline: none;  /* Usuwa standardowy obrys przy focusie */
+    border-color: #007bff;  /* Zmienia kolor ramki na niebieski, gdy input jest aktywny */
+}
+
 .Confirm-button {
     margin-top: 30px;
     background: #96ADE5;

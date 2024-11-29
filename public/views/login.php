@@ -6,8 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-<h2><?= $name ?></h2>
-    <h2><?= isset($email) ? $email : "" ?></h2>
+<h2><?= isset($email) ? $email : "" ?></h2>
   <h2>
   <?php if (isset($password)): ?>
     <h2><?= $password ?></h2>

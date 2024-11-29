@@ -3,35 +3,35 @@ require_once 'src/controllers/DashboardController.php';
 require_once 'src/controllers/SecurityController.php';
 
 class Routing{
-    public static function run ($url) {
-        $action = explode("/", $url)[0];
-        
-        $controller =null;
+    private static array $routes = [
+        'dashboard' => ['controller' => 'DashboardController', 'action' => 'dashboard'],
+        'login' => ['controller' => 'SecurityController', 'action' => 'login'],
+        'register' => ['controller' => 'SecurityController', 'action' => 'register']
+    ];
 
-        //if (!array_key_exists($action, self::$routes)) {
-        //  die("Wrong url!"); // zwrocic strone 404
-        //}
-        
+    public static function run($url)
+    {
+        // Rozbijamy URL, aby uzyskać pierwszą część jako akcję
+        $action = explode("/", $url)[0] ?: 'login'; // Domyślnie 'login'
 
-        switch ($action) {
-
-            case 'dashboard':
-                $controller = "DashboardController";
-                $action="dashboard";
-                break;
-
-            default:
-                $controller = "SecurityController";
-                $action="login";
-                break;
+        // Sprawdzamy, czy akcja istnieje w tablicy $routes
+        if (!array_key_exists($action, self::$routes)) {
+            self::error404(); // Funkcja obsługująca błąd 404
+            return;
         }
 
+        // Pobieramy kontroler i akcję
+        $controllerName = self::$routes[$action]['controller'];
+        $actionName = self::$routes[$action]['action'];
 
-        //$controller = self::$routes[$action];
-        $object = new $controller;
+        // Tworzymy obiekt kontrolera i wywołujemy metodę
+        $controller = new $controllerName();
+        $controller->$actionName();
+    }
 
-
-        $action = $action ?: 'index';
-        $object->$action();
-      }
+    private static function error404()
+    {
+        http_response_code(404);
+        include 'public/views/errors/404.php';
+    }
 }

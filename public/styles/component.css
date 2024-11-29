@@ -10,7 +10,10 @@ body {
 .Container_column{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-items: center;
 }
+
 .Container_text{
   width: auto;
   height: auto;

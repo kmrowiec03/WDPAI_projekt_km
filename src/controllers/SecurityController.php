@@ -16,11 +16,29 @@ class SecurityController extends Appcontroller{
         $email = $_POST['eMail'];
         $password = $_POST['password'];
 
-        $this->render("login",
+        $this->render("dashboard",
         ['name' =>"XYZ",
         'email' =>$email,
         'password' =>$password
         ]);
+
+    }
+    public function register(){
+
+        $method =$_SERVER['REQUEST_METHOD'];
+        if($this->isGet()){
+            return $this->render("register");
+        }
+
+
+        $email = $_POST['eMail'];
+        $password = $_POST['password'];
+
+        $this->render("dashboard",
+            ['name' =>"XYZ",
+                'email' =>$email,
+                'password' =>$password
+            ]);
 
     }
 
