@@ -12,7 +12,7 @@ class Routing{
     public static function run($url)
     {
         // Rozbijamy URL, aby uzyskać pierwszą część jako akcję
-        $action = explode("/", $url)[0] ?: 'login'; // Domyślnie 'login'
+        $action = explode("/", $url)[0] ?: 'dashboard'; // Domyślnie 'login'
 
         // Sprawdzamy, czy akcja istnieje w tablicy $routes
         if (!array_key_exists($action, self::$routes)) {

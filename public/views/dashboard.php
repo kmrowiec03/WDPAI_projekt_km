@@ -12,6 +12,15 @@
 <body>
     <?php include("public/views/navigation/navigation.php"); ?>
 
+
+    
+    <h2><?= isset($nick) ? $nick : "" ?></h2>
+    <h2>
+    <?php if (isset($password)): ?>
+        <h2><?= $password ?></h2>
+        <?php endif; ?>
+    </h2>
+    
     <form action="/register" method="GET">
         <button type="submit">ZAREJESTRUJ SIĘ</button>
     </form>

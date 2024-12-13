@@ -13,12 +13,12 @@ class SecurityController extends Appcontroller{
         }
         
 
-        $email = $_POST['eMail'];
+        $email = $_POST['nick'];
         $password = $_POST['password'];
 
         $this->render("dashboard",
         ['name' =>"XYZ",
-        'email' =>$email,
+        'nick' =>$email,
         'password' =>$password
         ]);
 
@@ -31,12 +31,12 @@ class SecurityController extends Appcontroller{
         }
 
 
-        $email = $_POST['eMail'];
+        $email = $_POST['nick'];
         $password = $_POST['password'];
 
         $this->render("dashboard",
             ['name' =>"XYZ",
-                'email' =>$email,
+                'nick' =>$email,
                 'password' =>$password
             ]);
 

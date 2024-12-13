@@ -13,7 +13,7 @@
 <body>
     <?php include("public/views/navigation/navigation.php"); ?>
 
-    <div class="Container_column">
+    <div class="cont_column">
         <div class="LogoContainer">
             <img src="public/images/logo.png" alt="Logo firmy" class="Logo Logo-big" width="450px">
         </div>
@@ -22,20 +22,24 @@
 
 
         <form action="/register" method="POST">
-                <div class="form-section">
-                    <input type="text" name="name" autocomplete="off" class="form-input">
-                    <label for="name" class="input-label"
-                        <span class="label-name">Name</span>
-                    </label>
-                </div>
-                <div class="form-section">
-                    <input type="password" name="password"  class="form-input">
-                    <label for="password" class="input-label"
-                    <span class="label-name">Password</span>
-                    </label>
-                </div>
 
-                <button>Submit</button>
+            <div class="form-section">
+                <input class="form-input" type="text" name="nick" autocomplete='off' required >
+                <label class="input-label" for="name">
+                    <span class="label-name">Name</span>
+                </label>
+            </div>
+
+            <div class="form-section">
+                <input class="form-input" type="password" name="password" autocomplete='off' required >
+                <label class="input-label" for="password">
+                    <span class="label-name">Password</span>
+                </label>
+            </div>
+
+            <form action="/dashboard" method="POST">
+              <button type="submit">Zarejestruj sie</button>
+            </form>
         </form>
 
 

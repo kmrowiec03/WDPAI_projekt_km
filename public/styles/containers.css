@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    height: 100%; /* Całkowita wysokość okna przeglądarki */
+    overflow-x: hidden; /* Wyłączenie przewijania w poziomie */
+  }
+
+.Container_for_object{
+    flex: 1 1 calc(25% - 1em); /* 4 obiekty w rzędzie, uwzględniając przerwy */
+    max-width: calc(25% - 1em); /* Maksymalna szerokość jednego obiektu */
+    height: auto; 
+    background-color: blueviolet;
+    text-align: center;
+    padding: 1em;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: white;
+}
+
+.Container_for_many_objects{
+    padding: 1% 0%;
+    margin: 0 5%;
+    width: 90%;
+    height:auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1em;
+    box-sizing: border-box;
+    margin-top: 80px;
+
+}
+.Container_for_object img {
+    width: 100%; 
+    height: auto; 
+    border-radius: 5px; 
+}
+.text
+{
+    word-wrap: break-word; /* Zawijanie tekstu */
+    margin-top: 0.5em; /* Odstęp nad tekstem */
+    font-size: 1rem; /* Rozmiar czcionki */
+    line-height: 1.5; /* Odstępy między liniami tekstu */
+    color: white; /* Kontrast tekstu */
+}
+
+
+
+
+/* Stylizacja dropdown */
+.Dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Przycisk dropdown */
+.DropdownButton {
+    background-color:inherit;
+    color: rgb(0, 0, 0) ;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border:none;
+}
+
+/* Elementy rozwijanego menu */
+.DropdownContent {
+    display: none; /* Domyślnie ukryte */
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Linki w rozwijanym menu */
+.DropdownContent a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.2s;
+}
+
+/* Efekt hover na linkach */
+.DropdownContent a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Wyświetlanie menu po najechaniu */
+.Dropdown:hover .DropdownContent {
+    display: block;
+}
+
+/* Opcjonalnie: estetyczny efekt przycisku po najechaniu */
+.DropdownButton:hover {
+    background-color: #5c5c5c;
+}
+
+/* 3 obiekty w rzędzie */
+@media (max-width: 1200px) {
+    .Container_for_object {
+        flex: 1 1 calc(33.33% - 1em); /* 3 obiekty w rzędzie */
+        max-width: calc(33.33% - 1em);
+    }
+}
+
+/* 2 obiekty w rzędzie */
+@media (max-width: 800px) {
+    .Container_for_object {
+        flex: 1 1 calc(50% - 1em); /* 2 obiekty w rzędzie */
+        max-width: calc(50% - 1em);
+    }
+}
+
+/* 1 obiekt w rzędzie */
+@media (max-width: 500px) {
+    .Container_for_object {
+        flex: 1 1 100%; /* 1 obiekt w rzędzie */
+        max-width: 100%;
+
+    }
+}
