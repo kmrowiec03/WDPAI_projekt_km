@@ -1,0 +1,24 @@
+.LogoContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+}
+.Logo-toolbar{
+  width:auto; /* Szerokość logo */
+  height: 70px; /* Zachowanie proporcji */
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-right: 1px #7C7C7C solid;
+}
+.Logo-big{
+  height: auto; 
+  width: 70%;
+}
+
+
+
+

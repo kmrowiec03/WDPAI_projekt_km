@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    height: 100%; /* Całkowita wysokość okna przeglądarki */
+    overflow-x: hidden; /* Wyłączenie przewijania w poziomie */
+  }
+.Toolbar {
+    width: 100% ;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #D9D9D9;
+    border-bottom: 1px #7C7C7C solid;
+    display: flex;
+    justify-content: flex-start;
+    align-items:center;
+    flex-direction: row;
+    z-index: 1000; /* priorytet wyswietlania*/
+}
+
+.main-content {
+    margin-top: 80px; /* Przesunięcie zawartości poniżej toolbara */
+   
+    background: url('../images/gym.jpg') no-repeat center left;
+    background-size: cover; /* Dopasowanie obrazu */
+
+    height: calc(100vh - 80px);
+    width: 100vw;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Kontekst dla pseudo-elementu */
+    overflow: hidden;
+    flex-direction: row;
+}
+ 
+.left-part{
+    background: url('../images/gym.jpg') no-repeat center left;
+    background-size: cover; /* Dopasowanie obrazu */
+    width: 30vw;
+    filter: blur(1px); /* Rozmycie tła */
+    height: calc(100vh - 80px);
+}
+
+.center-part{
+
+    padding: 10vh 0;
+    width:40vw;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.right-part{
+    background: url('../images/gym.jpg') no-repeat center right;
+    background-size: cover; /* Dopasowanie obrazu */
+    width: 30vw;
+    filter: blur(1px); /* Rozmycie tła */
+    height: calc(100vh - 80px);
+
+}
+  /* Przyciski na toolbarze */
+.Dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Przycisk dropdown */
+.DropdownButton {
+    background-color:inherit;
+    color: rgb(0, 0, 0) ;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border:none;
+}
+
+/* Elementy rozwijanego menu */
+.DropdownContent {
+    display: none; /* Domyślnie ukryte */
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Linki w rozwijanym menu */
+.DropdownContent a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.2s;
+}
+
+/* Efekt hover na linkach */
+.DropdownContent a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Wyświetlanie menu po najechaniu */
+.Dropdown:hover .DropdownContent {
+    display: block;
+}
+
+/* Opcjonalnie: estetyczny efekt przycisku po najechaniu */
+.DropdownButton:hover {
+    background-color: #8b8a8a;
+}

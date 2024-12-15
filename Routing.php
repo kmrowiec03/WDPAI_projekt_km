@@ -12,8 +12,10 @@ class Routing{
     public static function run($url)
     {
         // Rozbijamy URL, aby uzyskać pierwszą część jako akcję
-        $action = explode("/", $url)[0] ?: 'dashboard'; // Domyślnie 'login'
-
+        $parts = explode("/", $url);
+        $action = $parts[0] ?: 'dashboard';
+        $params = array_slice($parts, 1);
+        
         // Sprawdzamy, czy akcja istnieje w tablicy $routes
         if (!array_key_exists($action, self::$routes)) {
             self::error404(); // Funkcja obsługująca błąd 404

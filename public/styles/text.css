@@ -1,28 +1,8 @@
-.BigText {
-    width: 500px;
-    height: 80px;
-    position:absolute;
-    text-align: center;
-    color: rgba(0, 0, 0);
-    font-size: 48px;
-    font-family: "Montserrat","Roboto", sans-serif;
-    font-weight: 400;
-    line-height: 100px;
-}
-.Text {
-    color: rgba(0, 0, 0);
-    font-size: 15px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 400;
-    font-style:normal;
-    font-variant:normal;
-    word-wrap: break-word;
-    text-align:left;
-}
-.Text-background{
-    color: rgba(0, 0, 0, 0.40);
-}
-  
-.Text-bold{
-    font-weight:bold;
+.text_in_window
+{
+    word-wrap: break-word; /* Zawijanie tekstu */
+    margin-top: 0.5em; /* Odstęp nad tekstem */
+    font-size: 1rem; /* Rozmiar czcionki */
+    line-height: 1.5; /* Odstępy między liniami tekstu */
+    color: white; /* Kontrast tekstu */
 }
