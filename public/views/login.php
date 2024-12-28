@@ -16,15 +16,20 @@
     <?php include("public/views/navigation/navigation.php"); ?>
     <div class = "main-content Minions-background">
         <div class="Container_column">
+            <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
+                <p>Zalogowano jako: <?php echo $_SESSION['user']['email']; ?></p>
+            <?php else: ?>
+                <p>Nie jesteś zalogowany</p>
+            <?php endif; ?>
             <div class="LogoContainer">
                 <img src="public/images/logo.png" alt="Logo firmy" class="Logo Logo-big" width="450px">
             </div>
 
-            <form action="/register" method="POST">
+            <form action="/login" method="POST">
 
                 <div class="form-section">
-                    <input class="form-input" type="text" name="nick" autocomplete='off' required >
-                    <label class="input-label" for="name">
+                    <input class="form-input" type="text" name="email"  id="emael" autocomplete='off' required >
+                    <label class="input-label" for="emali">
                         <span class="label-name">Name</span>
                     </label>
                 </div>

@@ -15,6 +15,7 @@
 <body> 
   
     <?php include("public/views/navigation/navigation.php"); ?>
+
       <div class="Container_for_many_window">
           <div class="Container_for_window">
             <img src="public/images/gym.jpg" alt="zdjecie siłowni">
@@ -60,6 +61,11 @@
             <img src="public/images/gym.jpg" alt="zdjecie siłowni">
             <p class="text_in_window">fdsfdsfdsfdfsdfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfdfdsfdfsdfsd</p>
           </div>
+          <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
+              <p>Zalogowano jako: <?php echo $_SESSION['user']['email']; ?></p>
+          <?php else: ?>
+              <p>Nie jesteś zalogowany</p>
+          <?php endif; ?>
       </div>
     
 </body>

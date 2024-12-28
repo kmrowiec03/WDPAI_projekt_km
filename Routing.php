@@ -1,12 +1,16 @@
 <?php
 require_once 'src/controllers/DashboardController.php';
 require_once 'src/controllers/SecurityController.php';
+require_once 'src/controllers/ProfileController.php';
 
 class Routing{
     private static array $routes = [
         'dashboard' => ['controller' => 'DashboardController', 'action' => 'dashboard'],
         'login' => ['controller' => 'SecurityController', 'action' => 'login'],
-        'register' => ['controller' => 'SecurityController', 'action' => 'register']
+        'register' => ['controller' => 'SecurityController', 'action' => 'register'],
+        'profile' => ['controller' => 'ProfileController', 'action' => 'profile'],
+        'logout' => ['controller' => 'SecurityController', 'action' => 'logout'],
+        'trainings' => ['controller' => 'ProfileController', 'action' => 'trainings']
     ];
 
     public static function run($url)
@@ -28,6 +32,11 @@ class Routing{
 
         // Tworzymy obiekt kontrolera i wywołujemy metodę
         $controller = new $controllerName();
+        if ($action === 'profile' && !isset($_SESSION['user'])) {
+            header('Location: /login');
+            exit();
+        }
+
         $controller->$actionName();
     }
 
