@@ -7,12 +7,11 @@
 }
 .Logo-toolbar{
   width:auto; /* Szerokość logo */
-  height: 70px; /* Zachowanie proporcji */
-  padding-left: 40px;
-  padding-right: 40px;
+  height: 60px; /* Zachowanie proporcji */
+  padding-left: 30px;
+  padding-right: 15%;
   padding-top: 5px;
   padding-bottom: 5px;
-  border-right: 1px #7C7C7C solid;
 }
 .Logo-big{
   height: auto; 

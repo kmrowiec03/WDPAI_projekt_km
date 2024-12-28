@@ -13,8 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body> 
+  
     <?php include("public/views/navigation/navigation.php"); ?>
-    </div>
       <div class="Container_for_many_window">
           <div class="Container_for_window">
             <img src="public/images/gym.jpg" alt="zdjecie siłowni">

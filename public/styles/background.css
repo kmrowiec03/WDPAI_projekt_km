@@ -6,13 +6,14 @@ body {
   }
 .Toolbar {
     width: 100% ;
-    height: 80px;
+    height: 70px;
+    
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: #D9D9D9;
-    border-bottom: 1px #7C7C7C solid;
+    background:#8b8a8a;
+    border-bottom: 1px black solid;
     display: flex;
     justify-content: flex-start;
     align-items:center;
@@ -20,13 +21,12 @@ body {
     z-index: 1000; /* priorytet wyswietlania*/
 }
 
-.main-content {
-    margin-top: 80px; /* Przesunięcie zawartości poniżej toolbara */
+.main-content { /* Przesunięcie zawartości poniżej toolbara */
    
-    background: url('../images/gym.jpg') no-repeat center left;
+    background: url('../images/bench.webp') no-repeat center center;
     background-size: cover; /* Dopasowanie obrazu */
 
-    height: calc(100vh - 80px);
+    height:100vh;
     width: 100vw;
     display:flex;
     align-items: center;
@@ -71,7 +71,7 @@ body {
 .DropdownButton {
     background-color:inherit;
     color: rgb(0, 0, 0) ;
-    padding: 10px 20px;
+    padding: 10px 10px;
     font-size: 1rem;
     cursor: pointer;
     border:none;
@@ -112,3 +112,53 @@ body {
 .DropdownButton:hover {
     background-color: #8b8a8a;
 }
+
+.Toolbar_container_for_buttons{
+    height: 70px; 
+    width:100%;
+    background-color: inherit;
+    text-align: center;
+    padding: 1em;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    align-items: center ;
+}
+
+.Right-toolbar{
+    justify-content: flex-start;
+
+}
+
+.Left-toolbar{
+    justify-content:flex-end;
+
+}
+.Toolbar-buttons{
+    background-color:inherit;
+    color: rgb(0, 0, 0) ;
+    padding: 10px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border:1px black solid;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+.Toolbar-buttons:hover {
+    background-color: #8b8a8a;
+    color: white;
+}
+.Toolbar .LoginButton {
+    margin-left: auto; /* Przesuwa przycisk na prawą stronę */
+}
+
+
+@media (max-width: 400px) {
+    .Dropdown {
+        display: none;
+    }
+
+}
+

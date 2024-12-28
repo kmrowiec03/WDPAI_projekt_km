@@ -2,7 +2,7 @@
 /* uzywany */
 .Container_for_many_window{
     padding: 1% 0%;
-    margin: 0 5%;
+    margin: 85px 5% 0%;
     width: 90%;
     height:auto;
     display: flex;
@@ -10,7 +10,6 @@
     flex-wrap: wrap;
     gap: 1em;
     box-sizing: border-box;
-    margin-top: 80px;
 
 }
 .Container_for_window{

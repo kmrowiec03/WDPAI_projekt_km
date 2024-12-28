@@ -14,7 +14,7 @@
 </head>
 <body>
     <?php include("public/views/navigation/navigation.php"); ?>
-    <div class = "main-content">
+    <div class = "main-content Minions-background">
         <div class="Container_column">
             <div class="LogoContainer">
                 <img src="public/images/logo.png" alt="Logo firmy" class="Logo Logo-big" width="450px">

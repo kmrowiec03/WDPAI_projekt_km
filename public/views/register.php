@@ -15,7 +15,7 @@
 </head>
 <body>
     <?php include("public/views/navigation/navigation.php"); ?>
-    <div class = "main-content">
+    <div class = "main-content Minions-background">
         <div class="center-part">
             <div class="Container_column">
                 <div class="LogoContainer">
