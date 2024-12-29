@@ -6,3 +6,9 @@
     line-height: 1.5; /* Odstępy między liniami tekstu */
     color: white; /* Kontrast tekstu */
 }
+.text_profile_information{
+    margin-top: 0.5em; /* Odstęp nad tekstem */
+    font-size: 2rem; /* Rozmiar czcionki */
+    line-height: 1.5; /* Odstępy między liniami tekstu */
+    color: white; /* Kontrast tekstu */
+}

@@ -1,5 +1,8 @@
 <nav class="Toolbar">
         <div class="Toolbar_container_for_buttons Right-toolbar">
+            <button class="HamburgerButton">
+                <i class="fa-solid fa-bars icon_toolbar"></i>
+            </button>
             <div class="Dropdown">
                 <button class="DropdownButton">Moje treningi</button>
                 <div class="DropdownContent">
@@ -8,24 +11,13 @@
                     <a href="#statystyki">Statystyki</a>
                 </div>
             </div>
-            <div class="Dropdown">
-                <button class="DropdownButton">Moje treningi</button>
-                <div class="DropdownContent">
-                    <a href="#progres">Progres</a>
-                    <a href="/treningi">Treningi</a>
-                    <a href="#statystyki">Statystyki</a>
-                </div>
-            </div>
-            <div class="Dropdown">
-                <button class="DropdownButton">Moje treningi</button>
-                <div class="DropdownContent">
-                    <a href="#progres">Progres</a>
-                    <a href="#treningi">Treningi</a>
-                    <a href="#statystyki">Statystyki</a>
-                </div>
-            </div>
-        </div>
 
+        </div>
+        <div class="DropdownMenu">
+            <a href="#progres">Progres</a>
+            <a href="/trainings">Treningi</a>
+            <a href="#statystyki">Statystyki</a>
+        </div>
 
         <div class="LogoContainer">
             <a href="/dashboard">
@@ -35,14 +27,15 @@
         
         <div class="Toolbar_container_for_buttons Left-toolbar">
             <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']['email'])): ?>
-                <!-- Jeśli użytkownik jest zalogowany, pokaż przyciski wylogowania i profilu -->
-                <a href="/profile" class="Toolbar-buttons">Profil</a>
-                <a href="/logout" class="Toolbar-buttons">Wyloguj</a>
+                <a href="/profile" class="Toolbar-buttons">
+                    <i class="fa-solid fa-user icon_toolbar"></i>
+                </a>
+                <a href="/logout" class="Toolbar-buttons">
+                    <i class="fa-solid fa-arrow-right-from-bracket icon_toolbar"></i>
+                </a>
             <?php else: ?>
-                <!-- Jeśli użytkownik nie jest zalogowany, pokaż przyciski logowania i rejestracji -->
                 <a href="/login" class="Toolbar-buttons">LOG IN</a>
                 <a href="/register" class="Toolbar-buttons">SIGN IN</a>
             <?php endif; ?>
         </div>
-
 </nav>

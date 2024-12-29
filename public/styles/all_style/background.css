@@ -12,7 +12,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background:inherit;
+    background:  white;
     border-bottom: 1px black solid;
     display: flex;
     justify-content: flex-start;
@@ -23,7 +23,7 @@ body {
 
 .main-content { /* Przesunięcie zawartości poniżej toolbara */
    
-    background: url('../images/bench.webp') no-repeat center center;
+    background: url('../../images/tło.jpg') no-repeat center center;
     background-size: cover; /* Dopasowanie obrazu */
 
     height:100vh;
@@ -37,28 +37,24 @@ body {
 }
  
 .left-part{
-    background: url('../images/gym.jpg') no-repeat center left;
-    background-size: cover; /* Dopasowanie obrazu */
-    width: 30vw;
-    filter: blur(1px); /* Rozmycie tła */
-    height: calc(100vh - 80px);
+    margin-top:70px;
+    width: 30%;
+    height: calc(100vh - 70px);
 }
 
 .center-part{
-
-    padding: 10vh 0;
-    width:40vw;
+    margin-top:70px;
+    width:40%;
+    height: calc(100vh - 70px);
     display:flex;
     align-items: center;
     justify-content: center;
     
 }
 .right-part{
-    background: url('../images/gym.jpg') no-repeat center right;
-    background-size: cover; /* Dopasowanie obrazu */
-    width: 30vw;
-    filter: blur(1px); /* Rozmycie tła */
-    height: calc(100vh - 80px);
+    margin-top:70px;
+    width: 30%;
+    height: calc(100vh - 70px);
 
 }
   /* Przyciski na toolbarze */
@@ -120,7 +116,6 @@ body {
     text-align: center;
     padding: 1em;
     box-sizing: border-box;
-    border-radius: 5px;
     color: white;
     display: flex;
     align-items: center ;
@@ -153,12 +148,57 @@ body {
 .Toolbar .LoginButton {
     margin-left: auto; /* Przesuwa przycisk na prawą stronę */
 }
+.HamburgerButton {
+    display: none;
+}
 
-
-@media (max-width: 400px) {
+.icon_toolbar{
+    width: auto;
+    height: auto;
+}
+.DropdownMenu {
+    display: none;
+}
+@media (max-width: 768px) {
     .Dropdown {
         display: none;
     }
 
-}
+    .HamburgerButton {
+        display: block; /* Pokaż przycisk hamburgera */
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: black;
+        cursor: pointer;
+    }
 
+    .DropdownMenu {
+        position: absolute;
+        top: 70px; /* Dopasuj do wysokości toolbara */
+        left: 0;
+        right: 0;
+        background-color: white;
+        border-top: 1px solid black;
+        z-index: 999;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .DropdownMenu.show {
+        display: block; /* Wyświetl menu, gdy aktywne */
+    }
+
+    .DropdownMenu a {
+        display: block;
+        padding: 1em;
+        text-align: center;
+        border-bottom: 1px solid #f1f1f1;
+        text-decoration: none;
+        color: black;
+    }
+
+    .DropdownMenu a:hover {
+        background-color: #8b8a8a;
+        color: white;
+    }
+}
