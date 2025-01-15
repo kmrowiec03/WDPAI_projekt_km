@@ -10,7 +10,8 @@ class Routing{
         'register' => ['controller' => 'SecurityController', 'action' => 'register'],
         'profile' => ['controller' => 'ProfileController', 'action' => 'profile'],
         'logout' => ['controller' => 'SecurityController', 'action' => 'logout'],
-        'trainings' => ['controller' => 'ProfileController', 'action' => 'trainings']
+        'trainings' => ['controller' => 'ProfileController', 'action' => 'trainings'],
+        'add_article' => ['controller' => 'DashboardController', 'action' => 'uploadArticle']
     ];
 
     public static function run($url)

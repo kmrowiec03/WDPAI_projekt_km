@@ -2,8 +2,8 @@
 
 
 require_once 'AppController.php';
-require_once __DIR__ . '/../User.php';
-require_once __DIR__ . '/../../DatabaseConector.php';
+require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../../DatabaseConnector.php';
 
 class SecurityController extends AppController{
     private $users = [];

@@ -13,56 +13,65 @@
     <?php include("public/views/navigation/navigation.php"); ?>
 
       <div class="Container_for_many_window">
-          <div class="Container_for_window">
-            <img src="public/images/gym.jpg" alt="zdjecie siłowni">
-            <p class="text_in_window">fdsfdsfdsfdfsdfdsfdfdsfdfdsfdfsdfsd</p>
-          </div>
-          <div class="Container_for_window">
-            <img src="public/images/gym.jpg" alt="zdjecie siłowni">
-            <p class="text_in_window">fdsfdsfdsfdfsdfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfdfdsfdfsdfsd</p>
-          </div>
-          <div class="Container_for_window">
-            <img src="public/images/gym.jpg" alt="zdjecie siłowni">
-            <p class="text_in_window">fdsfdsfdsdsfdsfdsfdfsdfdsfdfdsfdfdsfdfsddsfdsfdsfdfsdfdsfdfdsfdfdsfdfsdfdfsdfdsfdfdsfdfdsfdfsdfsd</p>
-          </div>
-          <div class="Container_for_window">
-            <img src="public/images/gym.jpg" alt="zdjecie siłowni">
-            <p class="text_in_window">fdsfdsfdsfdsfdsfdfsdfdsfdfdsfdfdsfdfsddsfdfsdfdsfdfdsfdfdsfdfsdfsd</p>
-          </div>
-          <div class="Container_for_window">
-            <img src="public/images/gym.jpg" alt="zdjecie siłowni">
-            <p class="text_in_window">fdsfdsfdsfdsfdsfdfsdfdsfdfdsfdfdsfdfsddsfdfsdfdsfdfdsfdfdsfdfsdfsd</p>
-          </div>
-          <div class="Container_for_window">
-            <img src="public/images/gym.jpg" alt="zdjecie siłowni">
-            <p class="text_in_window">fdsfdsfdsfdsfdsfdfsdfdsfdfdsfdfdsfdfsddsfdfsdfdsfdfdsfdfdsfdfsdfsd</p>
-          </div>
-          <div class="Container_for_window">
-            <img src="public/images/gym.jpg" alt="zdjecie siłowni">
-            <p class="text_in_window">fdsfdsfdsfdfsdfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfdfdsfdfsdfsd</p>
-          </div>
-          <div class="Container_for_window">
-            <img src="public/images/gym.jpg" alt="zdjecie siłowni">
-            <p class="text_in_window">fdsfdsfdsfdfsdfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfdfdsfdfsdfsd</p>
-          </div>
-          <div class="Container_for_window">
-            <img src="public/images/gym.jpg" alt="zdjecie siłowni">
-            <p class="text_in_window">fdsfdsfdsfdfsdfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfdfdsfdfsdfsd</p>
-          </div>
-          <div class="Container_for_window">
-            <img src="public/images/gym.jpg" alt="zdjecie siłowni">
-            <p class="text_in_window">fdsfdsfdsfdfsdfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfdfdsfdfsdfsd</p>
-          </div>
-          <div class="Container_for_window">
-            <img src="public/images/gym.jpg" alt="zdjecie siłowni">
-            <p class="text_in_window">fdsfdsfdsfdfsdfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfddsfdsfdfsdfdsfdfdsfdfdsfdfsdfsd</p>
-          </div>
-          <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
-              <p>Zalogowano jako: <?php echo $_SESSION['user']['email']; ?></p>
+          <?php if (isset($articles) && !empty($articles)): ?>
+              <?php foreach ($articles as $article): ?>
+                  <?php if($article['published'] == 1): ?>
+                      <div class="Container_for_window">
+                          <img src="<?php echo htmlspecialchars($article['image_path']); ?>" alt="Image for <?php echo htmlspecialchars($article['title']); ?>" loading="lazy">
+                          <p class="text_in_window">
+                              <?php
+                              // first five words
+                              echo implode(' ', array_slice(explode(' ', strip_tags($article['content'])), 0, 5)) . '...';
+                              // strip tags - delete all html and PHP tags (ex. <p>tekst</p>)
+                              // explode - divide text to words, create table
+                              // array_slice - take 5 index from 0 from table(first arg)
+                              // explode - link words together
+                              ?>
+                          </p>
+                      </div>
+                  <?php endif; ?>
+              <?php endforeach; ?>
           <?php else: ?>
-              <p>Nie jesteś zalogowany</p>
+              <p>No articles found.</p>
           <?php endif; ?>
       </div>
+
+    <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']['email'])): ?>
+        <div class="Circle-button " id="openModal">
+            <i class="fa-solid fa-plus " style="font-size: 25px" ></i>
+        </div>
+    <?php endif; ?>
+
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close-button"><i class="fa-solid fa-xmark"></i></span>
+            <h2>Add New Article</h2>
+            <form id="article-form" enctype="multipart/form-data">
+                <label for="image">Wybierz zdjęcie:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="content">Content</label>
+                <textarea id="content" name="content" required></textarea><br><br>
+
+                <button type="submit">Add Article</button>
+            </form>
+        </div>
+    </div>
+    <div id="message-modal" class="modal">
+        <div class="modal-content-message">
+        <span id="closeMessageModal" class="close-button">
+            <i class="fa-solid fa-xmark"></i>
+        </span>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+
+
+    <script src="../../public/javascript/add_article_form.js"></script>
     <script src="../../public/javascript/dropdownMenuHamburger.js"></script>
 </body>
 </html>
