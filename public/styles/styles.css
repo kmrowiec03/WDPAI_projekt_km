@@ -1,7 +1,9 @@
-@import url('all_style/text.css');
-@import url('all_style/logo.css');
-@import url('all_style/button.css');
-@import url('all_style/register_login.css');
-@import url('all_style/containers.css');
-@import url('all_style/background.css');
-@import url('all_style/form.css');
+@import url('all_style/text/text.css');
+@import url('all_style/components/logo.css');
+@import url('all_style/components/button.css');
+@import url('all_style/pages/register_login.css');
+@import url('all_style/containers/containers.css');
+@import url('all_style/background_toolbar.css');
+@import url('all_style/components/form.css');
+@import url('all_style/pages/main_page.css');
+

@@ -8,6 +8,7 @@
                 <div class="DropdownContent">
                     <a href="#progres">Progres</a>
                     <a href="/trainings">Treningi</a>
+                    <a href="/articles">Zobacz artykuły</a>
                     <a href="#statystyki">Statystyki</a>
                 </div>
             </div>

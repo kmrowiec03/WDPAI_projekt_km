@@ -1,0 +1,30 @@
+.text_in_window
+{
+    font-size: 1rem;
+    color: #666;
+}
+.title_in_window
+{
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 1em 0;
+    color: #333;
+}
+.article-title{
+    font-size: 2.625em;
+    line-height: 1.2;
+
+}
+.article-header{
+    flex-direction: row;
+    margin-bottom: 1.375em;
+    position: relative;
+    display: flex;
+    height: auto;
+}
+.text_profile_information{
+    margin-top: 0.5em;
+    font-size: 2rem;
+    line-height: 1.5;
+    color: white;
+}

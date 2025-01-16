@@ -1,33 +1,54 @@
 
 /* uzywany */
 .Container_for_many_window{
-    padding: 1% 0%;
-    margin: 85px 5% 0%;
+    padding: 2% 0;
+    margin: 100px 5% 0;
     width: 90%;
-    height:auto;
+    height: auto;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: 1.5em;
     box-sizing: border-box;
 
 }
 .Container_for_window{
-    flex: 1 1 calc(25% - 1em); /* 4 obiekty w rzędzie, uwzględniając przerwy */
-    max-width: calc(25% - 1em); /* Maksymalna szerokość jednego obiektu */
-    height: auto; 
-    background-color: blueviolet;
+    flex: 1 1 calc(25% - 1.5em);
+    max-width: calc(25% - 1.5em);
+    height: auto;
+    background-color: #fff;
     text-align: center;
-    padding: 1em;
+    padding: 1.5em;
     box-sizing: border-box;
-    border-radius: 5px;
-    color: white;
+    border-radius: 10px;
+    color: #333;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.Container_for_window:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.article-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+.article-link:hover {
+    opacity: 0.9;
+}
+
+
 .Container_for_window img {
-    width: 100%; 
-    height: auto; 
-    border-radius: 5px; 
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+.Container_for_window img:hover {
+    transform: scale(1.05);
 }
 
 .Container_profile{
@@ -74,7 +95,6 @@
     justify-content: center;
 
 }
-
 
 /* 3 obiekty w rzędzie */
 @media (max-width: 1200px) {

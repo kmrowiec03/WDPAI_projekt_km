@@ -13,12 +13,7 @@
     <?php include("public/views/navigation/navigation.php"); ?>
     <div class = "main-content Minions-background">
         <div class="Container_column">
-            <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
-                <p>Zalogowano jako: <?php echo $_SESSION['user']['email']; ?></p>
-            <?php else: ?>
-                <p>Nie jesteś zalogowany</p>
-            <?php endif; ?>
-            <div class="LogoContainer">
+            <div class="LogoContainer" style="height: 200px">
                 <img src="public/images/logo.png" alt="Logo firmy" class="Logo Logo-big" width="450px">
             </div>
 
@@ -39,7 +34,7 @@
                 </div>
 
                 <form action="/dashboard" method="POST">
-                <button type="submit">Zaloguj sie</button>
+                <button type="submit" class="Confirm-button">Zaloguj sie</button>
                 </form>
             </form>
         </div>

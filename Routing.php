@@ -11,7 +11,9 @@ class Routing{
         'profile' => ['controller' => 'ProfileController', 'action' => 'profile'],
         'logout' => ['controller' => 'SecurityController', 'action' => 'logout'],
         'trainings' => ['controller' => 'ProfileController', 'action' => 'trainings'],
-        'add_article' => ['controller' => 'DashboardController', 'action' => 'uploadArticle']
+        'add_article' => ['controller' => 'DashboardController', 'action' => 'uploadArticle'],
+        'article' => ['controller' => 'DashboardController', 'action' => 'article'],
+        'articles' => ['controller' => 'DashboardController', 'action' => 'articles']
     ];
 
     public static function run($url)

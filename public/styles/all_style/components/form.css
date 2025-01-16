@@ -1,20 +1,20 @@
-/* Modal Styles */
+
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Background with transparency */
-    backdrop-filter: blur(5px); /* Blur the background */
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
     justify-content: center;
     align-items: center;
 }
 
 .modal-content {
-    background-color: white;
+    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     width: 60%;
@@ -44,8 +44,19 @@
     color: black;
 }
 
+.modal-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1em;
+    color: #2d89ef;
+}
 
-/* Form styling */
+.modal-content label {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 1em;
+    display: block;
+}
+
 .modal-content form {
     display: flex;
     flex-direction: column;
@@ -60,27 +71,28 @@
     border-radius: 4px;
     border: 1px solid #ccc;
 }
-.modal-content textarea {
-    width: 100%;           /* Szerokość 100% kontenera (możesz dostosować wartość) */
-    height: 300px;         /* Wysokość textarea, możesz dostosować */
-    resize: none;
-    overflow-y: auto;      /* Umożliwia przewijanie w pionie */
-    padding: 10px;         /* Opcjonalnie - margines wewnętrzny */
-    box-sizing: border-box;/* Zapewnia, że padding i border będą wliczane w całkowity rozmiar */
+.modal-content input, .modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
 }
 
-
 .modal-content form button {
-    padding: 10px;
-    background-color: #007bff;
+    background-color: #2d89ef;
     color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
 
 .modal-content form button:hover {
-    background-color: #0056b3;
+    background-color:  #1f6fcd;
 }
 
 

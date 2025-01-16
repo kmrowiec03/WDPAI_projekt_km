@@ -8,13 +8,20 @@ class DashboardController extends AppController{
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
+
+        $this->render("dashboard");
+    }
+    public function articles(){
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         $connector = new DatabaseConnector();
-        $stmt = $connector->connect()->prepare('SELECT title, content, image_path, published FROM articles WHERE published = TRUE');
+        $stmt = $connector->connect()->prepare('SELECT id, title, content, image_path, published FROM articles WHERE published = TRUE');
         $stmt->execute();
 
         $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $this->render("dashboard", ['articles' => $articles]);
+        $this->render("articles", ['articles' => $articles]);
     }
     public function uploadArticle() {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -58,6 +65,32 @@ class DashboardController extends AppController{
         }
     }
 
+
+    public function article()
+    {
+        if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+            // Jeśli brak ID lub jest nieprawidłowe, przerwij
+            $this->render('errors/404');
+            return;
+        }
+
+        $articleId = intval($_GET['id']); // Pobranie ID artykułu z parametru GET
+
+        $connector = new DatabaseConnector();
+        $stmt = $connector->connect()->prepare('SELECT id, title, content, image_path FROM articles WHERE id = :id AND published = TRUE');
+        $stmt->execute(['id' => $articleId]);
+
+        $article = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$article) {
+            // Jeśli artykuł nie istnieje lub nie jest opublikowany
+            $this->render('errors/404');
+            return;
+        }
+
+        // Przekazanie artykułu do widoku
+        $this->render('article', ['article' => $article]);
+    }
 
 
 

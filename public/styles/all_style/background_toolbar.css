@@ -22,8 +22,7 @@ body {
 }
 
 .main-content { /* Przesunięcie zawartości poniżej toolbara */
-   
-    background: url('../../images/tło.jpg') no-repeat center center;
+
     background-size: cover; /* Dopasowanie obrazu */
 
     height:100vh;
@@ -31,30 +30,42 @@ body {
     display:flex;
     align-items: center;
     justify-content: center;
-    position: relative; /* Kontekst dla pseudo-elementu */
+    position: relative;
     overflow: hidden;
     flex-direction: row;
+
+    padding-top: 70px;
 }
  
 .left-part{
-    margin-top:70px;
+
     width: 30%;
-    height: calc(100vh - 70px);
+    height: 100%;
 }
 
 .center-part{
-    margin-top:70px;
+
     width:40%;
-    height: calc(100vh - 70px);
+    height: 100%;
     display:flex;
     align-items: center;
     justify-content: center;
     
 }
+.for-article{
+    display: flex;
+    width: 80%;
+    flex-direction: row;
+}
+
+.center-part p {
+    margin-top: 0;
+    position: static;
+}
 .right-part{
-    margin-top:70px;
+
     width: 30%;
-    height: calc(100vh - 70px);
+    height: 100%;
 
 }
   /* Przyciski na toolbarze */
