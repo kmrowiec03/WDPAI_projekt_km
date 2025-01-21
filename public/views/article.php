@@ -32,5 +32,8 @@
         </div>
 
     </div>
+    <script src="../../public/javascript/add_article_form.js"></script>
+    <script src="../../public/javascript/dropdownMenuHamburger.js"></script>
+
 </body>
 </html>

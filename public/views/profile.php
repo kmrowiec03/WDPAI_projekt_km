@@ -12,40 +12,49 @@
 <body>
     <?php include("public/views/navigation/navigation.php"); ?>
     <div class="main-content">
-        <div class="left-part" style="width: 10%">
+    <div class="profile-container">
+        <!-- Sekcja danych użytkownika -->
+        <div class="user-details">
+            <h2>Profil użytkownika</h2>
+            <form id="profileForm">
+                <label for="firstName">Imię:</label>
+                <input type="text" id="firstName" value="John" readonly>
+
+                <label for="lastName">Nazwisko:</label>
+                <input type="text" id="lastName" value="Doe" readonly>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" value="john.doe@example.com" readonly>
+
+                <label for="phone">Numer telefonu:</label>
+                <input type="text" id="phone" value="123-456-789" readonly>
+
+                <label for="dob">Data urodzenia:</label>
+                <input type="date" id="dob" value="1990-01-01" readonly>
+
+                <button type="button" id="editProfile">Edytuj</button>
+                <button type="submit" id="saveProfile" style="display: none;">Zapisz</button>
+            </form>
         </div>
-        <div class="center-part" style="width: 80%">
-            <div class="Container_profile">
-                <div class="container50percentages" style="width: 35%">
-                    <div class="photo_container">
-                        <img src="public/images/profilowe.png" alt="zdjecie profilowe">
-                    </div>
-                    <div class="text_profile_information">
-                        <?php if (isset($_SESSION['user']) && !empty($_SESSION['user'])): ?>
-                            <p><?php echo $_SESSION['user']['email']; ?></p>
-                        <?php else: ?>
-                            <p>Nie jesteś zalogowany</p>
-                        <?php endif; ?>
-                    </div>
-                </div>
-                <div class="container50percentages" style="width: 65%; flex-direction: row">
-                    <div class="container50percentages" >
-                        <div class="information_container" style="margin-top: 100px">More Information</div>
-                        <div class="information_container"></div>
-                        <div class="information_container"></div>
-                    </div>
-                    <div class="container50percentages">
-                        <div class="information_container" style="margin-top: 100px">Friends</div>
-                        <div class="information_container">Transactions</div>
-                        <div class="information_container">Settings</div>
-                    </div>
-                </div>
+
+        <!-- Sekcja wykresów -->
+        <div class="progress-charts">
+            <h2>Postęp w treningu</h2>
+            <div class="chart" id="chart1">
+                <canvas id="progressChart1"></canvas>
+            </div>
+            <div class="chart" id="chart2">
+                <canvas id="progressChart2"></canvas>
             </div>
         </div>
-        <div class="right-part" style="width: 10%">
-        </div>
-
+    </div>
 
     </div>
+
+    <script src="../../public/javascript/add_article_form.js"></script>
+    <script src="../../public/javascript/dropdownMenuHamburger.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="change_profile_information.js"></script>
+
 </body>
 </html>

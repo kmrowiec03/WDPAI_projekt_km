@@ -73,6 +73,9 @@ class DashboardController extends AppController{
             $this->render('errors/404');
             return;
         }
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
 
         $articleId = intval($_GET['id']); // Pobranie ID artykułu z parametru GET
 

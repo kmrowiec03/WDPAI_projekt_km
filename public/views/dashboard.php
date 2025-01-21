@@ -77,5 +77,10 @@
         <p>&copy; 2025 Platforma Treningowa. Wszystkie prawa zastrzeżone.</p>
     </div>
 </footer>
+
+
+<script src="../../public/javascript/add_article_form.js"></script>
+<script src="../../public/javascript/dropdownMenuHamburger.js"></script>
+
 </body>
 </html>

@@ -12,7 +12,7 @@ class ProfileController extends AppController{
         $this->db = DatabaseConnector::getInstance();
     }
     public function profile() {
-        // Renderujemy widok profilu
+        
         $this->render("profile");
     }
     public function trainings() {
