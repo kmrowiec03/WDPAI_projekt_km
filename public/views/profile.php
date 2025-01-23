@@ -1,3 +1,10 @@
+<?php
+function safeHtmlspecialchars($value) {
+    return htmlspecialchars($value ?? '');
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,30 +20,24 @@
     <?php include("public/views/navigation/navigation.php"); ?>
     <div class="main-content" style="padding-top: 80px; align-items: flex-start">
     <div class="profile-container">
-        <!-- Sekcja danych użytkownika -->
         <div class="user-details">
             <h2>Profil użytkownika</h2>
-            <p><strong>Imię:</strong> <?= safeHtmlspecialchars($user['name']) ?></p>
-            <p><strong>Nazwisko:</strong> <?= safeHtmlspecialchars($user['surname']) ?></p>
-            <p><strong>Email:</strong> <?= safeHtmlspecialchars($user['email']) ?></p>
-            <p><strong>Numer telefonu:</strong> <?= safeHtmlspecialchars($user['phone_number']) ?></p>
-            <p><strong>Data urodzenia:</strong> <?= safeHtmlspecialchars($userDetails['date_of_birth']) ?></p>
-            <p><strong>Waga:</strong> <?= safeHtmlspecialchars($userDetails['weight']) ?> kg</p>
-            <p><strong>Wzrost:</strong> <?= safeHtmlspecialchars($userDetails['height']) ?> cm</p>
+            <p><strong>Imię:</strong> <?= safeHtmlspecialchars($user['name'] ?? 'Brak danych') ?></p>
+            <p><strong>Nazwisko:</strong> <?= safeHtmlspecialchars($user['surname'] ?? 'Brak danych') ?></p>
+            <p><strong>Email:</strong> <?= safeHtmlspecialchars($user['email'] ?? 'Brak danych') ?></p>
+            <p><strong>Numer telefonu:</strong> <?= safeHtmlspecialchars($user['phone_number'] ?? 'Brak danych') ?></p>
+            <p><strong>Data urodzenia:</strong> <?= safeHtmlspecialchars($userDetails['date_of_birth'] ?? 'Brak danych') ?></p>
+            <p><strong>Waga:</strong> <?= safeHtmlspecialchars($userDetails['weight'] ?? 'Brak danych') ?> kg</p>
+            <p><strong>Wzrost:</strong> <?= safeHtmlspecialchars($userDetails['height'] ?? 'Brak danych') ?> cm</p>
         </div>
-        <?php
-        function safeHtmlspecialchars($value) {
-            return htmlspecialchars($value ?? '');
-        }
-        ?>
-        <!-- Sekcja wykresów -->
+
         <div class="progress-charts">
             <h2>Postęp w treningu</h2>
-            <div class="chart" id="chart1">
-                <canvas id="progressChart1"></canvas>
+            <div class="chart" id="chart1" style="height: 25%">
+
             </div>
-            <div class="chart" id="chart2">
-                <canvas id="progressChart2"></canvas>
+            <div class="chart" id="chart2" style="height: 25%">
+
             </div>
         </div>
     </div>
@@ -45,8 +46,6 @@
 
     <script src="../../public/javascript/add_article_form.js"></script>
     <script src="../../public/javascript/dropdownMenuHamburger.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="change_profile_information.js"></script>
 
 </body>
 </html>

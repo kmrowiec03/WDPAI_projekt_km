@@ -1,4 +1,4 @@
-// Get modal and button
+
 const modal = document.getElementById('modal');
 const openModalButton = document.getElementById('openModal');
 const closeModalButton = document.getElementById('closeModal');
@@ -6,19 +6,19 @@ const messageModal = document.getElementById('message-modal');
 const closeMessageModalButton = document.getElementById('closeMessageModal');
 const modalMessage = document.getElementById('modal-message');
 const form = document.getElementById('article-form');
-// Open the modal when clicking the plus button
+// otwieranie okienka z mozliwoscia dodania artykulu
 openModalButton.addEventListener('click', function() {
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 });
 
-// Close the modal when clicking the close button (×)
+// zamykanie okienka
 closeModalButton.addEventListener('click', function() {
     modal.style.display = 'none';
     document.body.style.overflow = 'auto';
 });
 
-// Close the modal if the user clicks outside the modal content
+// zamykanie okienka
 window.addEventListener('click', function(event) {
     if (event.target === modal) {
         modal.style.display = 'none';
@@ -31,7 +31,7 @@ window.addEventListener('click', function(event) {
 
 
 form.addEventListener("submit", async function (e) {
-    e.preventDefault(); // Prevent page reload
+    e.preventDefault();
 
     const formData = new FormData(this);
 
@@ -41,10 +41,8 @@ form.addEventListener("submit", async function (e) {
             body: formData,
         });
 
-        // Sprawdzamy, czy odpowiedź jest poprawna
         const result = await response.json();
 
-        console.log(result); // Dodać logowanie odpowiedzi serwera w konsoli
 
         if (result.status === "success") {
             // Show success message and reset the form
@@ -55,10 +53,7 @@ form.addEventListener("submit", async function (e) {
             modalMessage.textContent = result.message;
         }
 
-        // Display the message modal
         messageModal.style.display = "flex";
-
-        // Close the add article modal
         modal.style.display = "none";
     } catch (error) {
         console.error("Error submitting the form:", error);

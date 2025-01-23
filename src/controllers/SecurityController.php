@@ -9,9 +9,6 @@ require_once __DIR__ . '/../models/UserDetails.php';
 class SecurityController extends AppController{
     private $db;
 
-    /**
-     * @throws Exception
-     */
     public function __construct() {
 
         parent::__construct();
@@ -34,7 +31,7 @@ class SecurityController extends AppController{
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        // Sprawdzamy, czy użytkownik istnieje w bazie
+
         $conn = $this->db->connect();
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->bindParam(':email', $email);
@@ -50,13 +47,12 @@ class SecurityController extends AppController{
                 $user['phone_number'],
                 $user['account_type']
             );
-            // Pobieramy szczegóły użytkownika z tabeli user_details
+
             $stmtDetails = $conn->prepare("SELECT * FROM user_details WHERE id = :user_id");
             $stmtDetails->bindParam(':user_id', $user['id']);
             $stmtDetails->execute();
             $userDetails = $stmtDetails->fetch(PDO::FETCH_ASSOC);
 
-            // Tworzymy obiekt UserDetails
             $userDetailsObj = new UserDetails(
                 $userDetails['weight'] ?? null,
                 $userDetails['height'] ?? null,
@@ -70,7 +66,6 @@ class SecurityController extends AppController{
                 $userDetails['medical_conditions'] ?? null
             );
 
-            // Ustawienie obiektu User w sesji
             $_SESSION['user'] = [
                 'id' => $user['id'],
                 'email' => $user['email'],
@@ -79,7 +74,7 @@ class SecurityController extends AppController{
                 'userDetailsObj' => $userDetailsObj
             ];
 
-            // Przekierowanie na dashboard
+
             header('Location: /dashboard');
             exit();
         }
@@ -92,7 +87,7 @@ class SecurityController extends AppController{
             session_destroy();
         }
 
-        // Po wylogowaniu, przekierowanie na stronę logowania
+
         header('Location: /login');
         exit();
     }
@@ -120,7 +115,7 @@ class SecurityController extends AppController{
             return $this->render('register', ['error' => 'Passwords do not match!']);
         }
 
-        // Sprawdzamy, czy e-mail już istnieje w bazie danych
+
         $conn = $this->db->connect();
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->bindParam(':email', $email);
@@ -131,7 +126,6 @@ class SecurityController extends AppController{
             return $this->render('register', ['error' => 'Email is already taken!']);
         }
 
-        // Jeśli nie ma takiego użytkownika, dodajemy nowego
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
         $stmt = $conn->prepare("INSERT INTO users (email, password) VALUES (:email, :password)");
         $stmt->bindParam(':email', $email);

@@ -2,12 +2,8 @@
 
 class AppController {
     public function __construct() {
-        // Sprawdź, czy sesja nie została już rozpoczęta
         if (session_status() == PHP_SESSION_NONE) {
-            // Sprawdź, czy nagłówki zostały wysłane
-            if (headers_sent()) {
-                throw new Exception("Headers already sent. Cannot start session.");
-            }
+
             session_start();
         }
     }

@@ -37,7 +37,7 @@ class WorkoutRepository extends Repository{
     public function toggleWorkoutCompletion($userId, $workoutId): array {
         $date = date('Y-m-d');
 
-        // Sprawdź, czy trening już jest ukończony
+
         $stmt = $this->database->prepare(
             'SELECT * FROM completed_workouts WHERE user_id = ? AND workout_id = ?'
         );
@@ -45,14 +45,14 @@ class WorkoutRepository extends Repository{
         $completedWorkout = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($completedWorkout) {
-            // Usuń ukończony trening
+            //usuwa trening z ukonczonych po odzanczeniu
             $stmt = $this->database->prepare(
                 'DELETE FROM completed_workouts WHERE id = ?'
             );
             $stmt->execute([$completedWorkout['id']]);
             return ['success' => true, 'message' => 'Workout removed from completed'];
         } else {
-            // Dodaj nowy ukończony trening
+
             $stmt = $this->database->prepare(
                 'INSERT INTO completed_workouts (user_id, workout_id, date) VALUES (?, ?, ?)'
             );

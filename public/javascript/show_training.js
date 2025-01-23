@@ -1,3 +1,5 @@
+
+//otworzenie okna z treningiem
 function openWorkoutModal(workoutId, workoutName, workoutDescription) {
     const modal = document.getElementById('workoutModal');
     const title = document.getElementById('modalWorkoutTitle');
@@ -48,7 +50,7 @@ function closeModal() {
 }
 
 
-
+//aktualizacja kg z fetchAPI
 function saveKgResult(exerciseId) {
     const kgInput = document.getElementById(`kgInput-${exerciseId}`).value; // Pobierz wartość z odpowiedniego inputu
 
@@ -90,7 +92,7 @@ function saveKgResult(exerciseId) {
             alert('Error updating kg result');
         });
 }
-
+//aktualizacja przerobionych treningow z fetchAPI
 function markWorkoutAsCompleted(workoutId) {
     const checkbox = document.getElementById(`completed-${workoutId}`);
     const workoutElement = document.querySelector(`.Container_for_window[data-id="${workoutId}"]`);

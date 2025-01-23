@@ -30,11 +30,11 @@
             </div>
             <div class="benefit-item">
                 <h3>Analiza postępów</h3>
-                <p>Śledź swoje wyniki i poprawiaj swoje czasy!</p>
+                <p>Śledź swoje wyniki i poprawiaj swoje maksy!</p>
             </div>
             <div class="benefit-item">
                 <h3>Tablica rekordów</h3>
-                <p>Porównuj swoje wyniki z innymi biegaczami.</p>
+                <p>Porównuj swoje wyniki.</p>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
     <section class="community">
         <div class="rectangle-container" >
             <h2>Dołącz do naszej społeczności</h2>
-            <p>Rywalizuj ze znajomymi,rodzina a co najwazniejsze ze samym soba</p>
+            <p>Rywalizuj  ze samym soba</p>
             <div class="container-for-buttons">
                 <a href="\register" class="btn-primary">Zarejestruj się teraz</a>
                 <a href="\login" class="btn-secondary">Zaloguj się</a>
@@ -58,13 +58,13 @@
         <h2>Top rekordy</h2>
         <div class="records-list">
             <div class="record">
-                <p><strong>Jan Kowalski</strong> - 5 km w 18:45</p>
+                <p><strong>Kacper Mrowiec</strong> - Bench Press: 200kg</p>
             </div>
             <div class="record">
-                <p><strong>Kasia Nowak</strong> - 10 km w 39:20</p>
+                <p><strong>Krzysztof Mazur</strong> - Bench Press: 150kg</p>
             </div>
             <div class="record">
-                <p><strong>Marek Zieliński</strong> - Maraton w 2:50:05</p>
+                <p><strong>Piotr Nycz</strong> - Bench Press: 100kg</p>
             </div>
         </div>
         <a href="#records" class="btn-secondary">Zobacz wszystkie rekordy</a>

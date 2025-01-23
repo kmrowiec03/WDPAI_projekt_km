@@ -1,3 +1,5 @@
+
+//zmiana statusu artykulu
 document.addEventListener("DOMContentLoaded", function() {
     const checkboxes = document.querySelectorAll('.publish-checkbox');
 

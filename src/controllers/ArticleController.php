@@ -47,15 +47,13 @@ class ArticleController extends AppController {
             return;
         }
 
-        // Pobranie danych z zapytania AJAX
         $data = json_decode(file_get_contents('php://input'), true);
         $articleId = $data['article_id'];
         $published = $data['published'] === 'true';
 
-        // Zaktualizowanie statusu artykułu w bazie danych
         $this->articleService->changeArticleStatus($articleId, $published);
 
-        // Odpowiedź zwrotna
+
         echo json_encode(['success' => true]);
     }
 }
