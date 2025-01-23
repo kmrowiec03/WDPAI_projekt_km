@@ -32,7 +32,7 @@
                         // explode - link words together
                         ?>
                     </p>
-                    <?php if ($_SESSION['user']['role'] === 'admin'): ?>
+                    <?php if (isset($_SESSION['user'])&&$_SESSION['user']['role'] === 'admin'): ?>
                         <label>
                             <input
                                     type="checkbox"
