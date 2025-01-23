@@ -4,40 +4,33 @@
 require_once 'AppController.php';
 require_once __DIR__ . '/../models/User.php';
 require_once __DIR__ . '/../utils/DatabaseConnector.php';
+require_once __DIR__ . '/../models/UserDetails.php';
 
 class SecurityController extends AppController{
-    private $users = [];
     private $db;
 
+    /**
+     * @throws Exception
+     */
     public function __construct() {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
 
-        // Sprawdź, czy użytkownicy są zapisani w sesji
-        if (!isset($_SESSION['user'])) {
-            $_SESSION['user'] = [];
-        }
-        $this->users = &$_SESSION['user'];
+        parent::__construct();
 
         $this->db = DatabaseConnector::getInstance();
     }
 
-    public function getUsers(): array
-    {
-        return $this->users;
-    }
+
 
     public function login() {
-
-
         $method = $_SERVER['REQUEST_METHOD'];
         if ($this->isGet()) {
             return $this->render("login");
         }
+
         if (!isset($_POST['email']) || !isset($_POST['password'])) {
             return $this->render('login', ['error' => 'Email and password are required.']);
         }
+
         $email = $_POST['email'];
         $password = $_POST['password'];
 
@@ -49,11 +42,44 @@ class SecurityController extends AppController{
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password'])) {
-            // Ustawienie sesji po udanym logowaniu
+            $userObj = new User(
+                $user['email'],
+                $user['password'],
+                $user['name'],
+                $user['surname'],
+                $user['phone_number'],
+                $user['account_type']
+            );
+            // Pobieramy szczegóły użytkownika z tabeli user_details
+            $stmtDetails = $conn->prepare("SELECT * FROM user_details WHERE id = :user_id");
+            $stmtDetails->bindParam(':user_id', $user['id']);
+            $stmtDetails->execute();
+            $userDetails = $stmtDetails->fetch(PDO::FETCH_ASSOC);
+
+            // Tworzymy obiekt UserDetails
+            $userDetailsObj = new UserDetails(
+                $userDetails['weight'] ?? null,
+                $userDetails['height'] ?? null,
+                $userDetails['date_of_birth'] ?? null,
+                $userDetails['bmi'] ?? null,
+                $userDetails['body_fat_percentage'] ?? null,
+                $userDetails['muscle_mass_percentage'] ?? null,
+                $userDetails['activity_level'] ?? null,
+                $userDetails['goal'] ?? null,
+                $userDetails['dietary_preferences'] ?? null,
+                $userDetails['medical_conditions'] ?? null
+            );
+
+            // Ustawienie obiektu User w sesji
             $_SESSION['user'] = [
                 'id' => $user['id'],
-                'email' => $user['email']
+                'email' => $user['email'],
+                'role' => $user['account_type'],
+                'userObj' => $userObj,
+                'userDetailsObj' => $userDetailsObj
             ];
+
+            // Przekierowanie na dashboard
             header('Location: /dashboard');
             exit();
         }
@@ -61,12 +87,8 @@ class SecurityController extends AppController{
         return $this->render('login', ['error' => 'Invalid email or password.']);
     }
     public function logout() {
-        // Sprawdzamy, czy sesja jest już uruchomiona, zanim ją zniszczymy
         if (session_status() === PHP_SESSION_ACTIVE) {
-            // Zniszczenie wszystkich zmiennych sesyjnych
             session_unset();
-
-            // Zniszczenie samej sesji
             session_destroy();
         }
 
@@ -75,7 +97,7 @@ class SecurityController extends AppController{
         exit();
     }
 
-    // Funkcja profilowa (widok profilu użytkownika)
+
     public function profile() {
         if (!isset($_SESSION['user'])) {
             header('Location: /login');

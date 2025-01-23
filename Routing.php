@@ -19,7 +19,9 @@ class Routing{
         'trainingPlans/{id}' => ['controller' => 'TrainingsController', 'action' => 'viewTrainingPlan'],
         'getExercises/{id}' => ['controller' => 'TrainingsController', 'action' => 'getExercises'],
         'updateExerciseKgResult' => ['controller' => 'TrainingsController', 'action' => 'updateExerciseKgResult'],
-        'markWorkoutAsCompleted' => ['controller' => 'TrainingsController', 'action' => 'markWorkoutAsCompleted']
+        'markWorkoutAsCompleted' => ['controller' => 'TrainingsController', 'action' => 'markWorkoutAsCompleted'],
+        'generate_plan' => ['controller' => 'TrainingsController', 'action' => 'generate_plan'],
+        'updateArticleStatus' => ['controller' => 'ArticleController', 'action' => 'updateArticleStatus']
     ];
 
     public static function run($url) {

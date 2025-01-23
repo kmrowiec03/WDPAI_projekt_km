@@ -20,7 +20,7 @@
             <form action="/login" method="POST">
 
                 <div class="form-section">
-                    <input class="form-input" type="text" name="email"  id="emael" autocomplete='off' required >
+                    <input class="form-input" type="email" name="email"  id="email" autocomplete='off' required >
                     <label class="input-label" for="emali">
                         <span class="label-name">Name</span>
                     </label>

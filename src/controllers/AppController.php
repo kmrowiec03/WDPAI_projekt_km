@@ -2,33 +2,39 @@
 
 class AppController {
     public function __construct() {
+        // Sprawdź, czy sesja nie została już rozpoczęta
         if (session_status() == PHP_SESSION_NONE) {
+            // Sprawdź, czy nagłówki zostały wysłane
+            if (headers_sent()) {
+                throw new Exception("Headers already sent. Cannot start session.");
+            }
             session_start();
         }
     }
-    protected function isGet(): bool
-    {
+
+    protected function isGet(): bool {
         return $_SERVER['REQUEST_METHOD'] === 'GET';
     }
 
-    protected function isPost(): bool
-    {
+    protected function isPost(): bool {
         return $_SERVER['REQUEST_METHOD'] === 'POST';
     }
 
-    protected function render(string $template = null, array $variables = [])
-    {
+    protected function render(string $template = null, array $variables = []) {
+        $templatePath = 'public/views/' . $template . '.php';
 
-        $templatePath = 'public/views/'. $template.'.php';
-        $output = 'File not found';
-
-        if(file_exists($templatePath)){
-            extract($variables);
-
-            ob_start();
-            include $templatePath;
-            $output = ob_get_clean();
+        if (!file_exists($templatePath)) {
+            http_response_code(404);
+            die("Template not found: $template");
         }
+
+        // Zabezpiecz zmienne widoku
+        extract($variables, EXTR_SKIP);
+
+        ob_start();
+        include $templatePath;
+        $output = ob_get_clean();
+
         print $output;
     }
 }

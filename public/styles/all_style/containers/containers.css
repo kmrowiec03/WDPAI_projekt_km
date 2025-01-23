@@ -130,6 +130,6 @@
     .Container_for_window {
         flex: 1 1 100%; /* 1 obiekt w rzędzie */
         max-width: 100%;
-
+        overflow-y: auto;
     }
 }

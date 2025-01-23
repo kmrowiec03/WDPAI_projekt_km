@@ -31,7 +31,7 @@
                         }
                     }
                     ?>
-                    <div class="Container_for_window <?php echo $isCompleted ? 'completed' : ''; ?>" style="display: flex; flex-direction: column">
+                    <div class="Container_for_window <?php echo $isCompleted ? 'completed' : ''; ?>" data-id="<?php echo $workout['id']; ?>" style="display: flex; flex-direction: column">
                         <div  onclick="openWorkoutModal(<?php echo $workout['id']; ?>, '<?php echo htmlspecialchars($workout['name']); ?>', '<?php echo htmlspecialchars($workout['description']); ?>')">
                             <p class="title_in_window">Tydzien: <?php echo htmlspecialchars($workout['week']); ?> Dzien: <?php echo htmlspecialchars($workout['day_of_week']); ?></p>
                             <p class="text_in_window">

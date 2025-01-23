@@ -6,33 +6,26 @@ function openWorkoutModal(workoutId, workoutName, workoutDescription) {
     title.textContent = workoutName;
     description.textContent = workoutDescription;
 
-    // Wyczyszczenie poprzednich ćwiczeń
     const exercisesContainer = document.getElementById('modalExercises');
     exercisesContainer.innerHTML = '<p>Loading exercises...</p>';
 
-    // Pobierz ćwiczenia dla treningu
     fetch(`/getExercises/${workoutId}`)
         .then(response => response.json())
         .then(exercises => {
-            console.log('Exercises from server:', exercises); // Logowanie odpowiedzi
-            exercisesContainer.innerHTML = ''; // Wyczyść poprzednią zawartość
-
+            exercisesContainer.innerHTML = '';
             if (exercises.length > 0) {
                 exercises.forEach(exercise => {
                     const exerciseItem = document.createElement('div');
                     exerciseItem.className = 'exercise-item';
-
-                    const exerciseId = exercise.id; // Przypisanie id ćwiczenia
-                    console.log('Exercise ID:', exerciseId); // Logowanie ID ćwiczenia
 
                     exerciseItem.innerHTML = `
                         <h4>${exercise.name}</h4>
                         <p>Sets: ${exercise.sets}</p>
                         <p>Reps: ${exercise.reps}</p>
                         <p>Rest Time: ${exercise.rest_time} sec</p>
-                        <p>Current weight: ${exercise.kg_result} kg</p>
-                        <input type="number" id="kgInput-${exerciseId}" placeholder="Enter kg">
-                        <button onclick="saveKgResult(${exerciseId})">Save</button>
+                        <p id="currentWeight-${exercise.id}">Current weight: ${exercise.kg_result} kg</p>
+                        <input type="number" id="kgInput-${exercise.id}" placeholder="Enter kg">
+                        <button onclick="saveKgResult(${exercise.id})">Save</button>
                     `;
 
                     exercisesContainer.appendChild(exerciseItem);
@@ -47,18 +40,13 @@ function openWorkoutModal(workoutId, workoutName, workoutDescription) {
         });
 
     modal.style.display = 'flex';
-    modal.addEventListener('click', (event) => {
-        if (event.target === modal) { // Sprawdza, czy kliknięto w tło (nie w modal-content)
-            closeModal();
-        }
-    });
 }
-
 
 function closeModal() {
     const modal = document.getElementById('workoutModal');
     modal.style.display = 'none';
 }
+
 
 
 function saveKgResult(exerciseId) {
@@ -103,7 +91,6 @@ function saveKgResult(exerciseId) {
         });
 }
 
-
 function markWorkoutAsCompleted(workoutId) {
     const checkbox = document.getElementById(`completed-${workoutId}`);
     const workoutElement = document.querySelector(`.Container_for_window[data-id="${workoutId}"]`);
@@ -129,7 +116,6 @@ function markWorkoutAsCompleted(workoutId) {
         .then((data) => {
             if (!data.success) {
                 alert('Error: ' + data.error);
-                // Jeśli jest błąd, cofnij zmiany w UI
                 if (workoutElement) {
                     if (checkbox.checked) {
                         workoutElement.classList.remove('completed');

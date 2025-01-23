@@ -39,19 +39,19 @@
         </div>
     </div>
 </section>
-
-<!-- Społeczność -->
-<section class="community">
-    <div class="rectangle-container" >
-        <h2>Dołącz do naszej społeczności</h2>
-        <p>Rywalizuj ze znajomymi,rodzina a co najwazniejsze ze samym soba</p>
-        <div class="container-for-buttons">
-            <a href="\register" class="btn-primary">Zarejestruj się teraz</a>
-            <a href="\login" class="btn-secondary">Zaloguj się</a>
+<?php if(!isset($_SESSION['user'])):?>
+    <!-- Społeczność -->
+    <section class="community">
+        <div class="rectangle-container" >
+            <h2>Dołącz do naszej społeczności</h2>
+            <p>Rywalizuj ze znajomymi,rodzina a co najwazniejsze ze samym soba</p>
+            <div class="container-for-buttons">
+                <a href="\register" class="btn-primary">Zarejestruj się teraz</a>
+                <a href="\login" class="btn-secondary">Zaloguj się</a>
+            </div>
         </div>
-    </div>
-</section>
-
+    </section>
+<?php endif;?>
 <!-- Sekcja z rekordami -->
 <section class="records">
     <div class="rectangle-container" >

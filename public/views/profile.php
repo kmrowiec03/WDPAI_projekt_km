@@ -11,32 +11,24 @@
 </head>
 <body>
     <?php include("public/views/navigation/navigation.php"); ?>
-    <div class="main-content">
+    <div class="main-content" style="padding-top: 80px; align-items: flex-start">
     <div class="profile-container">
         <!-- Sekcja danych użytkownika -->
         <div class="user-details">
             <h2>Profil użytkownika</h2>
-            <form id="profileForm">
-                <label for="firstName">Imię:</label>
-                <input type="text" id="firstName" value="John" readonly>
-
-                <label for="lastName">Nazwisko:</label>
-                <input type="text" id="lastName" value="Doe" readonly>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" value="john.doe@example.com" readonly>
-
-                <label for="phone">Numer telefonu:</label>
-                <input type="text" id="phone" value="123-456-789" readonly>
-
-                <label for="dob">Data urodzenia:</label>
-                <input type="date" id="dob" value="1990-01-01" readonly>
-
-                <button type="button" id="editProfile">Edytuj</button>
-                <button type="submit" id="saveProfile" style="display: none;">Zapisz</button>
-            </form>
+            <p><strong>Imię:</strong> <?= safeHtmlspecialchars($user['name']) ?></p>
+            <p><strong>Nazwisko:</strong> <?= safeHtmlspecialchars($user['surname']) ?></p>
+            <p><strong>Email:</strong> <?= safeHtmlspecialchars($user['email']) ?></p>
+            <p><strong>Numer telefonu:</strong> <?= safeHtmlspecialchars($user['phone_number']) ?></p>
+            <p><strong>Data urodzenia:</strong> <?= safeHtmlspecialchars($userDetails['date_of_birth']) ?></p>
+            <p><strong>Waga:</strong> <?= safeHtmlspecialchars($userDetails['weight']) ?> kg</p>
+            <p><strong>Wzrost:</strong> <?= safeHtmlspecialchars($userDetails['height']) ?> cm</p>
         </div>
-
+        <?php
+        function safeHtmlspecialchars($value) {
+            return htmlspecialchars($value ?? '');
+        }
+        ?>
         <!-- Sekcja wykresów -->
         <div class="progress-charts">
             <h2>Postęp w treningu</h2>

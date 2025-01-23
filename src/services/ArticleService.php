@@ -38,4 +38,12 @@ class ArticleService {
     public function getArticleById($id): ?array {
         return $this->articleRepository->fetchArticleById($id);
     }
+    public function getAllArticles(): array {
+        return $this->articleRepository->getAllArticles();
+    }
+
+    public function changeArticleStatus(int $articleId, bool $published): void {
+        // Możesz tu dodać logikę biznesową, np. logowanie zmian, walidację itd.
+        $this->articleRepository->updateArticleStatus($articleId, $published);
+    }
 }

@@ -33,9 +33,33 @@
     <?php endif; ?>
 </div>
 
+<?php if (isset($_SESSION['user'])): ?>
+    <div class="Circle-button" id="openModal">
+        <i class="fa-solid fa-plus" style="font-size: 25px"></i>
+    </div>
+<?php endif; ?>
 
+<!-- Modal z formularzem -->
+<div id="trainingModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Wybierz części ciała do ćwiczenia</h2>
+        <form id="generate_plan" method="POST" action="/generate_plan">
+            <label for="bodyParts">Części ciała:</label>
+            <select name="bodyParts[]" id="bodyParts" multiple>
+                <option value="chest">Klatka piersiowa</option>
+                <option value="back">Plecy</option>
+                <option value="legs">Nogi</option>
+                <option value="waist">Talia</option>
+                <option value="arms">Ramiona</option>
+            </select>
+            <button type="submit">Generuj plan</button>
+        </form>
+    </div>
+</div>
+
+<script src="../../public/javascript/generate_new_training_plan.js"></script>
 <script src="../../public/javascript/show_training.js"></script>
-<script src="../../public/javascript/add_article_form.js"></script>
 <script src="../../public/javascript/dropdownMenuHamburger.js"></script>
 
 </body>

@@ -15,7 +15,6 @@
 <div class="Container_for_many_window">
     <?php if (isset($articles) && !empty($articles)): ?>
         <?php foreach ($articles as $article): ?>
-            <?php if($article['published'] == 1): ?>
                 <a href="articles/<?php echo $article['id']; ?>" class="Container_for_window article-link">
                 <img src="<?php echo htmlspecialchars($article['image_path']); ?>" alt="Image for <?php echo htmlspecialchars($article['title']); ?>" loading="lazy">
                     <p class="title_in_window">
@@ -33,15 +32,25 @@
                         // explode - link words together
                         ?>
                     </p>
+                    <?php if ($_SESSION['user']['role'] === 'admin'): ?>
+                        <label>
+                            <input
+                                    type="checkbox"
+                                    class="publish-checkbox"
+                                    data-article-id="<?php echo $article['id']; ?>"
+                                <?php echo $article['published'] ? 'checked' : ''; ?>
+                            >
+                            Published
+                        </label>
+                    <?php endif; ?>
                 </a>
-            <?php endif; ?>
         <?php endforeach; ?>
     <?php else: ?>
         <p>No articles found.</p>
     <?php endif; ?>
 </div>
 
-<?php if (isset($_SESSION['user']) && !empty($_SESSION['user']['email'])): ?>
+<?php if (isset($_SESSION['user'])): ?>
     <div class="Circle-button " id="openModal">
         <i class="fa-solid fa-plus " style="font-size: 25px" ></i>
     </div>
@@ -76,6 +85,7 @@
 </div>
 
 
+<script src="../../public/javascript/change_article_status.js"></script>
 <script src="../../public/javascript/add_article_form.js"></script>
 <script src="../../public/javascript/dropdownMenuHamburger.js"></script>
 </body>

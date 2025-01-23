@@ -2,13 +2,19 @@
 
 require_once 'AppController.php';
 require_once "src/services/TrainingService.php";
+require_once 'src/services/ExerciseService.php';
+require_once 'src/repository/TrainingPlanRepository.php';
 
 class TrainingsController extends AppController {
     private TrainingService $trainingService;
+    private ExerciseService $exerciseService;
+    private TrainingPlanRepository $trainingPlanRepository;
 
     public function __construct() {
         parent::__construct();
         $this->trainingService = new TrainingService();
+        $this->exerciseService = new ExerciseService();
+        $this->trainingPlanRepository = new TrainingPlanRepository();
     }
 
     public function trainings() {
@@ -50,4 +56,28 @@ class TrainingsController extends AppController {
         header('Content-Type: application/json');
         echo json_encode($response);
     }
+
+
+    public function generate_plan()
+    {
+        if (!isset($_SESSION['user'])) {
+            $this->redirect('login');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['bodyParts'])) {
+            $bodyParts = $_POST['bodyParts'];
+            $userId = $_SESSION['user']['id'];
+
+            // Generate the plan using the ExerciseService
+            $plan = $this->exerciseService->generateTrainingPlan($bodyParts, $userId);
+
+            // Save the plan to the database
+            $this->trainingPlanRepository->savePlan($plan);
+
+            header('Location: /trainingPlans');
+        }
+
+
+    }
+
 }

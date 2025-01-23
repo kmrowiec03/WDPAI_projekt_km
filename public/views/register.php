@@ -21,7 +21,7 @@
                 <form action="/register" method="POST" class="form-container">
 
                     <div class="form-section">
-                        <input class="form-input" type="text" name="email" id="email" autocomplete='off' required >
+                        <input class="form-input" type="email" name="email" id="email" autocomplete='off' required >
                         <label class="input-label" for="email">
                             <span class="label-name">Email</span>
                         </label>

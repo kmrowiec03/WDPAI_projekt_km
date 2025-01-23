@@ -11,6 +11,9 @@
     align-items: center;
     z-index: 1000;
 }
+.completed {
+    border: 3px solid green; /* Przykład zielonej obwódki */
+}
 
 #workoutModal .modal-content {
     background-color: white;

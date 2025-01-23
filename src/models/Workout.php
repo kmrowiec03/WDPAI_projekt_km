@@ -2,20 +2,27 @@
 
 
 class Workout {
-    private int $id;
+    private ?int $id; // ID może być opcjonalne dla nowo tworzonych workoutów
     private string $name;
     private string $description;
-    private string $dayOfWeek;
+    private int $dayOfWeek;
     private int $week;
-    private int $trainingPlanId;
+    private array $exercises;
 
-    public function __construct(int $id, string $name, string $description, string $dayOfWeek, int $week, int $trainingPlanId) {
+    public function __construct(
+        ?int $id,
+        string $name,
+        string $description,
+        int $dayOfWeek,
+        int $week,
+        array $exercises
+    ) {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
         $this->dayOfWeek = $dayOfWeek;
         $this->week = $week;
-        $this->trainingPlanId = $trainingPlanId;
+        $this->exercises = $exercises;
     }
 
     public function getId(): int {
@@ -40,6 +47,10 @@ class Workout {
 
     public function getTrainingPlanId(): int {
         return $this->trainingPlanId;
+    }
+
+    public function getExercises(): array {
+        return $this->exercises;
     }
 }
 

@@ -1,16 +1,23 @@
 <?php
 
-
 class Exercise {
-    private int $id;
+    private ?int $id;
     private string $name;
     private int $sets;
     private int $reps;
     private int $restTime;
-    private float $kgResult;
-    private int $workoutId;
+    private ?float $kgResult;
+    private ?int $workoutId; // Teraz workoutId może być null
 
-    public function __construct(int $id, string $name, int $sets, int $reps, int $restTime, float $kgResult, int $workoutId) {
+    public function __construct(
+        ?int $id,
+        string $name,
+        int $sets,
+        int $reps,
+        int $restTime,
+        ?float $kgResult = null,
+        ?int $workoutId = null // workoutId jako opcjonalne
+    ) {
         $this->id = $id;
         $this->name = $name;
         $this->sets = $sets;
@@ -20,7 +27,7 @@ class Exercise {
         $this->workoutId = $workoutId;
     }
 
-    public function getId(): int {
+    public function getId(): ?int {
         return $this->id;
     }
 
@@ -40,7 +47,7 @@ class Exercise {
         return $this->restTime;
     }
 
-    public function getKgResult(): float {
+    public function getKgResult(): ?float {
         return $this->kgResult;
     }
 
