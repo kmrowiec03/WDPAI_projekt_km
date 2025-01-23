@@ -2,6 +2,8 @@
 require_once 'src/controllers/DashboardController.php';
 require_once 'src/controllers/SecurityController.php';
 require_once 'src/controllers/ProfileController.php';
+require_once 'src/controllers/TrainingsController.php';
+require_once 'src/controllers/ArticleController.php';
 
 class Routing{
     private static array $routes = [
@@ -10,37 +12,62 @@ class Routing{
         'register' => ['controller' => 'SecurityController', 'action' => 'register'],
         'profile' => ['controller' => 'ProfileController', 'action' => 'profile'],
         'logout' => ['controller' => 'SecurityController', 'action' => 'logout'],
-        'trainings' => ['controller' => 'ProfileController', 'action' => 'trainings'],
-        'add_article' => ['controller' => 'DashboardController', 'action' => 'uploadArticle'],
-        'article' => ['controller' => 'DashboardController', 'action' => 'article'],
-        'articles' => ['controller' => 'DashboardController', 'action' => 'articles']
+        'trainingPlans' => ['controller' => 'TrainingsController', 'action' => 'trainings'],
+        'add_article' => ['controller' => 'ArticleController', 'action' => 'uploadArticle'],
+        'articles/{id}' => ['controller' => 'ArticleController', 'action' => 'viewArticle'],
+        'articles' => ['controller' => 'ArticleController', 'action' => 'articles'],
+        'trainingPlans/{id}' => ['controller' => 'TrainingsController', 'action' => 'viewTrainingPlan'],
+        'getExercises/{id}' => ['controller' => 'TrainingsController', 'action' => 'getExercises'],
+        'updateExerciseKgResult' => ['controller' => 'TrainingsController', 'action' => 'updateExerciseKgResult'],
+        'markWorkoutAsCompleted' => ['controller' => 'TrainingsController', 'action' => 'markWorkoutAsCompleted']
     ];
 
-    public static function run($url)
-    {
-        // Rozbijamy URL, aby uzyskać pierwszą część jako akcję
+    public static function run($url) {
+
         $parts = explode("/", $url);
         $action = $parts[0] ?: 'dashboard';
         $params = array_slice($parts, 1);
-        
-        // Sprawdzamy, czy akcja istnieje w tablicy $routes
-        if (!array_key_exists($action, self::$routes)) {
-            self::error404(); // Funkcja obsługująca błąd 404
-            return;
+
+
+        if (preg_match('/^trainingPlans\/(\d+)$/', $url, $matches)) {
+            $id = $matches[1];
+            $controllerName = self::$routes['trainingPlans/{id}']['controller'];
+            $actionName = self::$routes['trainingPlans/{id}']['action'];
+
+            $controller = new $controllerName();
+            $controller->$actionName($id);
         }
+        elseif (preg_match('/^articles\/(\d+)$/', $url, $matches)) {
+            $id = $matches[1];
+            $controllerName = self::$routes['articles/{id}']['controller'];
+            $actionName = self::$routes['articles/{id}']['action'];
 
-        // Pobieramy kontroler i akcję
-        $controllerName = self::$routes[$action]['controller'];
-        $actionName = self::$routes[$action]['action'];
-
-        // Tworzymy obiekt kontrolera i wywołujemy metodę
-        $controller = new $controllerName();
-        if ($action === 'profile' && !isset($_SESSION['user'])) {
-            header('Location: /login');
-            exit();
+            $controller = new $controllerName();
+            $controller->$actionName($id);
         }
+        elseif (preg_match('/^getExercises\/(\d+)$/', $url, $matches)) {
+            $id = $matches[1];
+            $controllerName = self::$routes['getExercises/{id}']['controller'];
+            $actionName = self::$routes['getExercises/{id}']['action'];
 
-        $controller->$actionName();
+            $controller = new $controllerName();
+            $controller->$actionName($id);
+        }
+        elseif (preg_match('/^markWorkoutAsCompleted\/(\d+)$/', $url, $matches)) {
+            $workoutId = $matches[1]; // Przechwycenie workoutId z URL
+            $controllerName = self::$routes['markWorkoutAsCompleted']['controller'];
+            $actionName = self::$routes['markWorkoutAsCompleted']['action'];
+
+            $controller = new $controllerName();
+            $controller->$actionName($workoutId);
+        } else {
+
+            $controllerName = self::$routes[$action]['controller'];
+            $actionName = self::$routes[$action]['action'];
+
+            $controller = new $controllerName();
+            $controller->$actionName();
+        }
     }
 
     private static function error404()

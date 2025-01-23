@@ -31,7 +31,7 @@ class User {
         return $this->surname;
     }
     public function getNickname() {
-    return $this->nickname;
+        return $this->nickname;
     }
     public function setEmail($email) {
         $this->email = $email;

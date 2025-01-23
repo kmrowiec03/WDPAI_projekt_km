@@ -3,7 +3,7 @@
 
 require_once 'AppController.php';
 require_once __DIR__ . '/../models/User.php';
-require_once __DIR__ . '/../../DatabaseConnector.php';
+require_once __DIR__ . '/../utils/DatabaseConnector.php';
 
 class SecurityController extends AppController{
     private $users = [];
@@ -50,7 +50,10 @@ class SecurityController extends AppController{
 
         if ($user && password_verify($password, $user['password'])) {
             // Ustawienie sesji po udanym logowaniu
-            $_SESSION['user'] = ['email' => $user['email']];
+            $_SESSION['user'] = [
+                'id' => $user['id'],
+                'email' => $user['email']
+            ];
             header('Location: /dashboard');
             exit();
         }

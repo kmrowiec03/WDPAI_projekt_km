@@ -16,8 +16,8 @@
     <?php if (isset($articles) && !empty($articles)): ?>
         <?php foreach ($articles as $article): ?>
             <?php if($article['published'] == 1): ?>
-                <a href="article?id=<?php echo $article['id']; ?>" class="Container_for_window article-link" >
-                    <img src="<?php echo htmlspecialchars($article['image_path']); ?>" alt="Image for <?php echo htmlspecialchars($article['title']); ?>" loading="lazy">
+                <a href="articles/<?php echo $article['id']; ?>" class="Container_for_window article-link">
+                <img src="<?php echo htmlspecialchars($article['image_path']); ?>" alt="Image for <?php echo htmlspecialchars($article['title']); ?>" loading="lazy">
                     <p class="title_in_window">
                         <?php
                         echo $article['title'];

@@ -25,7 +25,9 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+.Container_for_window.completed {
+    border: 2px solid green; /* Zielona obwódka po zaznaczeniu */
+}
 .Container_for_window:hover {
     transform: translateY(-10px);
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);

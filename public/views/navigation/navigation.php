@@ -1,42 +1,40 @@
 <nav class="Toolbar">
-        <div class="Toolbar_container_for_buttons Right-toolbar">
+        <div class="Toolbar_container_for_buttons Left-toolbar">
             <button class="HamburgerButton">
                 <i class="fa-solid fa-bars icon_toolbar"></i>
             </button>
-            <div class="Dropdown">
-                <button class="DropdownButton">Moje treningi</button>
-                <div class="DropdownContent">
-                    <a href="#progres">Progres</a>
-                    <a href="/trainings">Treningi</a>
-                    <a href="/articles">Zobacz artykuły</a>
-                    <a href="#statystyki">Statystyki</a>
-                </div>
-            </div>
-
+            <a href="/trainingPlans" class="toolbar_button">Treningi</a>
+            <a href="/articles" class="toolbar_button">Artykuły</a>
         </div>
         <div class="DropdownMenu">
-            <a href="#progres">Progres</a>
-            <a href="/trainings">Treningi</a>
-            <a href="#statystyki">Statystyki</a>
+            <a href="/trainingPlans" class="toolbar_button">Treningi</a>
+            <a href="/articles" class="toolbar_button">Artykuły</a>
+            <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']['email'])): ?>
+                <a href="/profile" class="toolbar_button">Profil</a>
+                <a href="/logout" class="toolbar_button">Wyloguj</a>
+            <?php else: ?>
+                <a href="/login" class="toolbar_button">Zaloguj sie</a>
+                <a href="/register" class="toolbar_button">Zarejestruj sie</a>
+            <?php endif; ?>
         </div>
 
         <div class="LogoContainer">
             <a href="/dashboard">
-            <img src="public/images/logo.png" alt="Logo firmy" class="Logo-toolbar">
+            <img src="/public/images/logo.png" alt="Logo firmy" class="Logo-toolbar">
             </a>
         </div>
         
-        <div class="Toolbar_container_for_buttons Left-toolbar">
+        <div class="Toolbar_container_for_buttons Right-toolbar">
             <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']['email'])): ?>
-                <a href="/profile" class="Toolbar-buttons">
+                <a href="/profile" class="toolbar_button">
                     <i class="fa-solid fa-user icon_toolbar"></i>
                 </a>
-                <a href="/logout" class="Toolbar-buttons">
+                <a href="/logout" class="toolbar_button">
                     <i class="fa-solid fa-arrow-right-from-bracket icon_toolbar"></i>
                 </a>
             <?php else: ?>
-                <a href="/login" class="Toolbar-buttons">LOG IN</a>
-                <a href="/register" class="Toolbar-buttons">SIGN IN</a>
+                <a href="/login" class="toolbar_button">Zaloguj sie</a>
+                <a href="/register" class="toolbar_button">Zarejestruj sie</a>
             <?php endif; ?>
         </div>
 </nav>

@@ -1,12 +1,12 @@
 <?php
 
-require_once __DIR__.'/../../Database.php';
+require_once __DIR__ . '/../utils/DatabaseConnector.php';
 
 class Repository {
-    protected $database;
+    protected ?DatabaseConnector $database;
 
     public function __construct()
     {
-        $this->database = new DatabaseConnector();
+        $this->database = DatabaseConnector::getInstance();
     }
 }
