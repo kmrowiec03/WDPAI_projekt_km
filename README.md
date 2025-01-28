@@ -39,6 +39,24 @@ PureLift to aplikacja internetowa stworzona dla miłośników fitnessu i aktywno
 
 PureLift jest doskonałym narzędziem dla osób, które chcą systematycznie zarządzać swoimi treningami i monitorować postępy. Aplikacja jest również przeznaczona dla społeczności sportowej, w której użytkownicy mogą dzielić się wiedzą i doświadczeniami poprzez publikację artykułów. Dla administratorów aplikacja oferuje narzędzia do moderacji treści i zarządzania jakością publikowanych informacji.
 
+### Poniżej znajduja sie zdjecia z działania aplikacji PureLift oraz jej bazy danych:
+
+### Struktura bazy danych:
+![Widok artykulow jako admin](/WDPAI_projekt_km/images_to_readme/dateBase.png)
+
+
+### Strona z artykułami (widok z perspektywy admina oraz użytkownika):
+![Widok artykulow jako admin](/WDPAI_projekt_km/images_to_readme/admin_articles.png)
+![Interfejs użytkownika](/WDPAI_projekt_km/images_to_readme/user_articles.png)
+
+### Plan treningowy
+![Interfejs użytkownika](/WDPAI_projekt_km/images_to_readme/trainings.png)
+![Widok artykulow jako admin](/WDPAI_projekt_km/images_to_readme/plan_generator.png)
+![Widok artykulow jako admin](/WDPAI_projekt_km/images_to_readme/training_details.png)
+
+
+
+
 ## W planach rozwoju
 
 - **Zaawansowane statystyki treningowe** – np. analiza tygodniowa, miesięczna i roczna postępów.

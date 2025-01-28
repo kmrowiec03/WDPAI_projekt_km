@@ -39,19 +39,16 @@
     </div>
 <?php endif; ?>
 
-<!-- Modal z formularzem -->
 <div id="trainingModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close"></span>
         <h2>Wybierz części ciała do ćwiczenia</h2>
         <form id="generate_plan" method="POST" action="/generate_plan">
             <label for="bodyParts">Części ciała:</label>
             <select name="bodyParts[]" id="bodyParts" multiple>
                 <option value="chest">Klatka piersiowa</option>
                 <option value="back">Plecy</option>
-                <option value="legs">Nogi</option>
-                <option value="waist">Talia</option>
-                <option value="arms">Ramiona</option>
+                <option value="waist">Brzuch</option>
             </select>
             <button type="submit">Generuj plan</button>
         </form>

@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Otwieranie modala
     openModalBtn.addEventListener('click', () => {
-        modal.style.display = 'block';
+        modal.style.display = 'flex';
+        modal.style.alignItems= 'center';
+        modal.style.justifyContent = 'center'
     });
 
     // Zamykanie modala
