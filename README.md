@@ -42,17 +42,17 @@ PureLift jest doskonałym narzędziem dla osób, które chcą systematycznie zar
 ### Poniżej znajduja sie zdjecia z działania aplikacji PureLift oraz jej bazy danych:
 
 ### Struktura bazy danych:
-![Widok artykulow jako admin](/WDPAI_projekt_km/images_to_readme/dateBase.png)
+![Widok artykulow jako admin](images_to_readme/dateBase.png)
 
 
 ### Strona z artykułami (widok z perspektywy admina oraz użytkownika):
-![Widok artykulow jako admin](/WDPAI_projekt_km/images_to_readme/admin_articles.png)
-![Interfejs użytkownika](/WDPAI_projekt_km/images_to_readme/user_articles.png)
+![Widok artykulow jako admin](images_to_readme/admin_articles.png)
+![Interfejs użytkownika](images_to_readme/user_articles.png)
 
 ### Plan treningowy
-![Interfejs użytkownika](/WDPAI_projekt_km/images_to_readme/trainings.png)
-![Widok artykulow jako admin](/WDPAI_projekt_km/images_to_readme/plan_generator.png)
-![Widok artykulow jako admin](/WDPAI_projekt_km/images_to_readme/training_details.png)
+![Interfejs użytkownika](images_to_readme/trainings.png)
+![Widok artykulow jako admin](images_to_readme/plan_generator.png)
+![Widok artykulow jako admin](images_to_readme/training_details.png)
 
 
 
